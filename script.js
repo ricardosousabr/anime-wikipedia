@@ -1,9 +1,10 @@
 const form = document.querySelector("#form-game");
+const inputAnime = document.querySelector(".input-anime");
 const box = document.querySelector(".box-data");
-const gmaesUrl = "https://kitsu.io/api/edge/anime?filter[id]=";
+const gmaesUrl = "https://kitsu.io/api/edge/";
 
-async function responseAPI() {
-  const returnApi = await fetch(gmaesUrl + "1");
+async function fetchAPI(idAnime) {
+  const returnApi = await fetch(gmaesUrl + "anime?filter[text]=" + idAnime);
   const response = await returnApi.json();
 
   return response;
@@ -33,11 +34,11 @@ function createImgAnime(original) {
   return imageAnime;
 }
 
-async function showAnime() {
+async function showAnime(idAnime) {
   let response;
 
   try {
-    response = await responseAPI();
+    response = await fetchAPI(idAnime);
   } catch (err) {
     console.log("Deu errado");
   }
@@ -52,8 +53,16 @@ async function showAnime() {
   box.appendChild(createSynopsis(synopsis));
 }
 
+function clearAnime() {
+  box.innerHTML = "";
+}
+
 form.addEventListener("submit", (event) => {
   event.preventDefault();
 
-  showAnime();
+  const inputValue = inputAnime.value.trim();
+  const idAnime = inputValue || "cowboy-bebop";
+
+  clearAnime();
+  showAnime(idAnime);
 });
