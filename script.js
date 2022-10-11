@@ -9,7 +9,31 @@ async function responseAPI() {
   return response;
 }
 
-async function showGame() {
+function createNameAnime(slug) {
+  const nameAnime = document.createElement("p");
+
+  nameAnime.innerHTML = slug;
+
+  return nameAnime;
+}
+
+function createSynopsis(synopsis) {
+  const synopsisAnime = document.createElement("p");
+
+  synopsisAnime.innerHTML = synopsis;
+
+  return synopsisAnime;
+}
+
+function createImgAnime(original) {
+  const imageAnime = document.createElement("img");
+
+  imageAnime.src = original;
+
+  return imageAnime;
+}
+
+async function showAnime() {
   let response;
 
   try {
@@ -23,11 +47,13 @@ async function showGame() {
   const { slug, synopsis, posterImage } = attributes;
   const { original } = posterImage;
 
-  console.log(id, slug, synopsis, original);
+  box.appendChild(createImgAnime(original));
+  box.appendChild(createNameAnime(slug));
+  box.appendChild(createSynopsis(synopsis));
 }
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
 
-  showGame();
+  showAnime();
 });
