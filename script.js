@@ -1,4 +1,4 @@
-const form = document.querySelector("#form-game");
+const form = document.querySelector("#form-anime");
 const inputAnime = document.querySelector(".input-anime");
 const box = document.querySelector(".box-data");
 const gmaesUrl = "https://kitsu.io/api/edge/";
@@ -13,6 +13,7 @@ async function fetchAPI(idAnime) {
 function createNameAnime(slug) {
   const nameAnime = document.createElement("p");
 
+  nameAnime.classList.add("title-anime");
   nameAnime.innerHTML = slug;
 
   return nameAnime;

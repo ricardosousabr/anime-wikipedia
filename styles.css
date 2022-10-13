@@ -1,0 +1,45 @@
+body {
+  margin: 0;
+  font-family: 'Syncopate', sans-serif;
+
+}
+
+.box {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+}
+
+.box-data {
+  width: 800px;
+
+}
+
+#form-anime {
+  margin-bottom: 50px;
+}
+
+.input-anime {
+  height: 20px;
+  border-radius: 13px;
+  border: 1px solid black;
+}
+
+button {
+  background: transparent;
+  border-radius: 13px;
+  border: 1px solid black;
+  width: 65px;
+  height: 23px;
+}
+
+.title-anime {
+  font-weight: bold;
+}
+
+img {
+  width: 250px;
+  height: 400px;
+
+}
