@@ -58,6 +58,10 @@ function clearAnime() {
   box.innerHTML = "";
 }
 
+function clearInputAnime() {
+  inputAnime.value = "";
+}
+
 form.addEventListener("submit", (event) => {
   event.preventDefault();
 
@@ -66,4 +70,5 @@ form.addEventListener("submit", (event) => {
 
   clearAnime();
   showAnime(idAnime);
+  clearInputAnime();
 });
