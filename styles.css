@@ -16,6 +16,13 @@ body {
 
 }
 
+.box-button {
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 #form-anime {
   margin-bottom: 50px;
 }

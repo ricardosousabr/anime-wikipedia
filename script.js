@@ -2,12 +2,35 @@ const form = document.querySelector("#form-anime");
 const inputAnime = document.querySelector(".input-anime");
 const box = document.querySelector(".box-data");
 const gmaesUrl = "https://kitsu.io/api/edge/";
+let enpoint = "";
 
 async function fetchAPI(idAnime) {
-  const returnApi = await fetch(gmaesUrl + "anime?filter[text]=" + idAnime);
+  const returnApi = await fetch(
+    gmaesUrl + enpoint + "?filter[text]=" + idAnime
+  );
   const response = await returnApi.json();
 
   return response;
+}
+
+function endpointAnime() {
+  const buttonAnime = document.querySelector(".button-anime");
+
+  buttonAnime.addEventListener("click", () => {
+    enpoint = "anime";
+  });
+
+  return buttonAnime;
+}
+
+function endpointManga() {
+  const buttonManga = document.querySelector(".button-manga");
+
+  buttonManga.addEventListener("click", () => {
+    enpoint = "manga";
+  });
+
+  return buttonManga;
 }
 
 function createNameAnime(slug) {
@@ -61,6 +84,9 @@ function clearAnime() {
 function clearInputAnime() {
   inputAnime.value = "";
 }
+
+endpointAnime();
+endpointManga();
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
