@@ -17,9 +17,14 @@ body {
 }
 
 .box-button {
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   display: flex;
   flex-direction: column;
+  align-items: center;
+}
+
+.box-chek {
+  display: flex;
   align-items: center;
 }
 

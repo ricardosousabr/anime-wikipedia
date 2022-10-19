@@ -1,6 +1,8 @@
 const form = document.querySelector("#form-anime");
 const inputAnime = document.querySelector(".input-anime");
 const box = document.querySelector(".box-data");
+const checkBoxAnime = document.querySelector(".chek-box-anime");
+const checkBoxManga = document.querySelector(".chek-box-manga");
 const gmaesUrl = "https://kitsu.io/api/edge/";
 let enpoint = "";
 
@@ -14,23 +16,23 @@ async function fetchAPI(idAnime) {
 }
 
 function endpointAnime() {
-  const buttonAnime = document.querySelector(".button-anime");
-
-  buttonAnime.addEventListener("click", () => {
-    enpoint = "anime";
+  checkBoxAnime.addEventListener("click", () => {
+    if (checkBoxAnime.checked) {
+      enpoint = "anime";
+      checkBoxManga.checked = false;
+      clearAnime();
+    }
   });
-
-  return buttonAnime;
 }
 
 function endpointManga() {
-  const buttonManga = document.querySelector(".button-manga");
-
-  buttonManga.addEventListener("click", () => {
-    enpoint = "manga";
+  checkBoxManga.addEventListener("click", () => {
+    if (checkBoxManga.checked) {
+      enpoint = "manga";
+      checkBoxAnime.checked = false;
+      clearAnime();
+    }
   });
-
-  return buttonManga;
 }
 
 function createNameAnime(slug) {
