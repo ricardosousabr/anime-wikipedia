@@ -70,13 +70,15 @@ async function showAnime(idAnime) {
   }
 
   const { data } = response;
-  const { id, attributes } = data[0];
-  const { slug, synopsis, posterImage } = attributes;
-  const { original } = posterImage;
+  for (let anime of data) {
+    const { attributes } = anime;
+    const { slug, synopsis, posterImage } = attributes;
+    const { original } = posterImage;
 
-  box.appendChild(createImgAnime(original));
-  box.appendChild(createNameAnime(slug));
-  box.appendChild(createSynopsis(synopsis));
+    box.appendChild(createImgAnime(original));
+    box.appendChild(createNameAnime(slug));
+    box.appendChild(createSynopsis(synopsis));
+  }
 }
 
 function clearAnime() {
