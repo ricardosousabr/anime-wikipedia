@@ -44,14 +44,6 @@ function createNameAnime(slug) {
   return nameAnime;
 }
 
-function createSynopsis(synopsis) {
-  const synopsisAnime = document.createElement("p");
-
-  synopsisAnime.innerHTML = synopsis;
-
-  return synopsisAnime;
-}
-
 function createImgAnime(original) {
   const imageAnime = document.createElement("img");
 
@@ -72,12 +64,11 @@ async function showAnime(idAnime) {
   const { data } = response;
   for (let anime of data) {
     const { attributes } = anime;
-    const { slug, synopsis, posterImage } = attributes;
+    const { slug, posterImage } = attributes;
     const { original } = posterImage;
 
     box.appendChild(createImgAnime(original));
     box.appendChild(createNameAnime(slug));
-    box.appendChild(createSynopsis(synopsis));
   }
 }
 
