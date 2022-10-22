@@ -66,9 +66,12 @@ async function showAnime(idAnime) {
     const { attributes } = anime;
     const { slug, posterImage } = attributes;
     const { original } = posterImage;
+    const boxAnime = document.createElement("div");
 
-    box.appendChild(createImgAnime(original));
-    box.appendChild(createNameAnime(slug));
+    boxAnime.classList.add("box-anime");
+    boxAnime.appendChild(createImgAnime(original));
+    boxAnime.appendChild(createNameAnime(slug));
+    box.appendChild(boxAnime);
   }
 }
 

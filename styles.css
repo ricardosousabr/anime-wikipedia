@@ -1,19 +1,29 @@
 body {
   margin: 0;
-  font-family: 'Syncopate', sans-serif;
-
+  font-family: 'Open Sans', sans-serif;
+  background-image: url("./img/background.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+  color: white;
 }
 
 .box {
   display: flex;
   align-items: center;
   flex-direction: column;
-
 }
 
 .box-data {
-  width: 800px;
+  width: 700px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 
+.box-anime {
+  width: 200px;
+  height: 250px;
+  margin-bottom: 20px;
 }
 
 .box-button {
@@ -36,6 +46,7 @@ body {
   height: 20px;
   border-radius: 13px;
   border: 1px solid black;
+  background: transparent;
 }
 
 button {
@@ -44,10 +55,12 @@ button {
   border: 1px solid black;
   width: 65px;
   height: 23px;
+  color: white;
 }
 
 .title-anime {
   font-weight: bold;
+  font-size: 12px;
 }
 
 img {
