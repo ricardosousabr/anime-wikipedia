@@ -5,16 +5,18 @@ body {
   background-attachment: fixed;
   background-size: cover;
   color: white;
+  margin: 0 100px;
 }
 
 .box {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
+  justify-content: center;
   flex-direction: column;
 }
 
 .box-data {
-  width: 700px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -43,19 +45,21 @@ body {
 }
 
 .input-anime {
-  height: 20px;
+  height: 25px;
+  width: 300px;
   border-radius: 13px;
   border: 1px solid black;
   background: transparent;
 }
 
 button {
-  background: transparent;
+  background: rgb(157, 27, 243);
   border-radius: 13px;
   border: 1px solid black;
-  width: 65px;
-  height: 23px;
+  width: 80px;
+  height: 30px;
   color: white;
+  font-size: 15px;
 }
 
 .title-anime {
@@ -68,3 +72,8 @@ img {
   height: 200px;
 
 }
+
+.chek-box-anime {
+ background: transparent;
+}
+
