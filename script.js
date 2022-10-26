@@ -3,12 +3,20 @@ const inputAnime = document.querySelector(".input-anime");
 const box = document.querySelector(".box-data");
 const checkBoxAnime = document.querySelector(".chek-box-anime");
 const checkBoxManga = document.querySelector(".chek-box-manga");
-const gmaesUrl = "https://kitsu.io/api/edge/";
+const animeUrl = "https://kitsu.io/api/edge/";
 let enpoint = "";
+let page = 0;
+let nextPage = "";
 
 async function fetchAPI(idAnime) {
   const returnApi = await fetch(
-    gmaesUrl + enpoint + "?filter[text]=" + idAnime
+    nextPage ||
+      animeUrl +
+        enpoint +
+        "?filter%5Btext%5D=" +
+        idAnime +
+        "&page%5Blimit%5D=10&page%5Boffset%5D=" +
+        page
   );
   const response = await returnApi.json();
 
@@ -33,6 +41,20 @@ function endpointManga() {
       clearAnime();
     }
   });
+}
+
+function createButtonNextPage(links) {
+  const buttonNext = document.createElement("button");
+
+  buttonNext.innerHTML = "Next";
+  buttonNext.addEventListener("click", () => {
+    nextPage = links.next;
+    page + 10;
+    clearAnime();
+    showAnime();
+  });
+
+  return buttonNext;
 }
 
 function createNameAnime(slug) {
@@ -61,7 +83,7 @@ async function showAnime(idAnime) {
     console.log("Deu errado");
   }
 
-  const { data } = response;
+  const { data, links } = response;
   for (let anime of data) {
     const { attributes } = anime;
     const { slug, posterImage } = attributes;
@@ -73,6 +95,7 @@ async function showAnime(idAnime) {
     boxAnime.appendChild(createNameAnime(slug));
     box.appendChild(boxAnime);
   }
+  box.appendChild(createButtonNextPage(links));
 }
 
 function clearAnime() {
@@ -93,6 +116,7 @@ form.addEventListener("submit", (event) => {
   const idAnime = inputValue || "cowboy-bebop";
 
   clearAnime();
+  nextPage = "";
   showAnime(idAnime);
   clearInputAnime();
 });
