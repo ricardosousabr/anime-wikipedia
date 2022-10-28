@@ -43,18 +43,30 @@ function endpointManga() {
   });
 }
 
-function createButtonNextPage(links) {
+function createButtonNextPage(next) {
   const buttonNext = document.createElement("button");
 
   buttonNext.innerHTML = "Next";
   buttonNext.addEventListener("click", () => {
-    nextPage = links.next;
-    page + 10;
+    nextPage = next;
     clearAnime();
     showAnime();
   });
 
   return buttonNext;
+}
+
+function createButtonPrevPage(prev) {
+  const buttonPrev = document.createElement("button");
+
+  buttonPrev.innerHTML = "Prev";
+  buttonPrev.addEventListener("click", () => {
+    nextPage = prev;
+    clearAnime();
+    showAnime();
+  });
+
+  return buttonPrev;
 }
 
 function createNameAnime(slug) {
@@ -84,6 +96,7 @@ async function showAnime(idAnime) {
   }
 
   const { data, links } = response;
+  const { next, prev } = links;
   for (let anime of data) {
     const { attributes } = anime;
     const { slug, posterImage } = attributes;
@@ -95,7 +108,12 @@ async function showAnime(idAnime) {
     boxAnime.appendChild(createNameAnime(slug));
     box.appendChild(boxAnime);
   }
-  box.appendChild(createButtonNextPage(links));
+  if (prev) {
+    box.appendChild(createButtonPrevPage(prev));
+  }
+  if (next) {
+    box.appendChild(createButtonNextPage(next));
+  }
 }
 
 function clearAnime() {
@@ -117,6 +135,7 @@ form.addEventListener("submit", (event) => {
 
   clearAnime();
   nextPage = "";
+  prevPage = "";
   showAnime(idAnime);
   clearInputAnime();
 });
