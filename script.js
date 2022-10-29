@@ -3,6 +3,7 @@ const inputAnime = document.querySelector(".input-anime");
 const box = document.querySelector(".box-data");
 const checkBoxAnime = document.querySelector(".chek-box-anime");
 const checkBoxManga = document.querySelector(".chek-box-manga");
+const boxBtnPage = document.querySelector(".box-button-page");
 const animeUrl = "https://kitsu.io/api/edge/";
 let enpoint = "";
 let page = 0;
@@ -46,7 +47,7 @@ function endpointManga() {
 function createButtonNextPage(next) {
   const buttonNext = document.createElement("button");
 
-  buttonNext.innerHTML = "Next";
+  buttonNext.innerHTML = "next";
   buttonNext.addEventListener("click", () => {
     nextPage = next;
     clearAnime();
@@ -59,7 +60,7 @@ function createButtonNextPage(next) {
 function createButtonPrevPage(prev) {
   const buttonPrev = document.createElement("button");
 
-  buttonPrev.innerHTML = "Prev";
+  buttonPrev.innerHTML = "prev";
   buttonPrev.addEventListener("click", () => {
     nextPage = prev;
     clearAnime();
@@ -109,15 +110,16 @@ async function showAnime(idAnime) {
     box.appendChild(boxAnime);
   }
   if (prev) {
-    box.appendChild(createButtonPrevPage(prev));
+    boxBtnPage.appendChild(createButtonPrevPage(prev));
   }
   if (next) {
-    box.appendChild(createButtonNextPage(next));
+    boxBtnPage.appendChild(createButtonNextPage(next));
   }
 }
 
 function clearAnime() {
   box.innerHTML = "";
+  boxBtnPage.innerHTML = "";
 }
 
 function clearInputAnime() {
@@ -135,7 +137,6 @@ form.addEventListener("submit", (event) => {
 
   clearAnime();
   nextPage = "";
-  prevPage = "";
   showAnime(idAnime);
   clearInputAnime();
 });
