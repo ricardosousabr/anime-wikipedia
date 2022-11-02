@@ -47,20 +47,31 @@ body {
 
 #form-anime {
   margin-bottom: 50px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .input-anime {
   height: 30px;
-  width: 300px;
+  width: 100%;
   border-radius: 10px;
   border: none;
   background: white;
   outline: none;
 }
 
-.lupa-svg {
+.icon-input {
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.container-input {
   position: relative;
-  bottom: 30px; left: 270px;
+  margin-bottom: 20px;
 }
 
 .box-title {
